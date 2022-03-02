@@ -11,10 +11,10 @@ class RedVisit extends Model
     protected $table = 'red_visit';
     public function red()
     {
-        return $this->belongsTo(Red_test::class, 'red_id', 'id');
+        return $this->belongsTo(Red_test::class, 'red_id');
     }
     public function visit()
     {
-        return $this->belongsTo(Visit::class, 'visit_id', 'id');
+        return $this->belongsTo(Visit::class, 'visit_id');
     }
 }

@@ -11,10 +11,10 @@ class DrugVisit extends Model
     protected $table = 'drug_visit';
     public function drug()
     {
-        return $this->belongsTo(Drug_prescription::class, 'drug_id', 'id');
+        return $this->belongsTo(Drug_prescription::class, 'drug_id');
     }
     public function visit()
     {
-        return $this->belongsTo(Visit::class, 'visit_id', 'id');
+        return $this->belongsTo(Visit::class, 'visit_id');
     }
 }

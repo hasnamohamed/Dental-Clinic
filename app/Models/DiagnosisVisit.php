@@ -11,10 +11,14 @@ class DiagnosisVisit extends Model
     protected $table = 'diagnosis_visit';
     public function diagnosis()
     {
-        return $this->belongsTo(Diagnosi::class, 'diagnosis_id', 'id');
+        return $this->belongsTo(Diagnosi::class, 'diagnosis_id');
     }
     public function visit()
     {
-        return $this->belongsTo(Visit::class, 'visit_id', 'id');
+        return $this->belongsTo(Visit::class, 'visit_id');
     }
+//     public function visit()
+// {
+//     return $this->belongsToMany(Page::class, 'custom_pivot_table');
+// }
 }

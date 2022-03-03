@@ -11,6 +11,12 @@ class Visit extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class,'patient_id','id');
-
     }
+
+    public function red()  {
+
+        return $this->belongsToMany(Red_test::class, 'red_test_visit', 'visit_id', 'red_test_id');
+    }
+
+
 }

@@ -12,4 +12,5 @@ class Bill extends Model
     {
         return $this->belongsTo(Visit::class,'visit_id','id');
     }
+   
 }

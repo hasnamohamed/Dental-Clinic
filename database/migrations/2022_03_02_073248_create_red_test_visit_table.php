@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('red_visit', function (Blueprint $table) {
+        Schema::create('red_test_visit', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('visit_id')->unsigned()->nullable();
             $table->foreign('visit_id')->references('id')->on('visits');
-            $table->bigInteger('red_id')->unsigned()->nullable();
-            $table->foreign('red_id')->references('id')->on('red_tests');
+            $table->bigInteger('red_test_id')->unsigned()->nullable();
+            $table->foreign('red_test_id')->references('id')->on('red_tests');
             $table->timestamps();
         });
     }

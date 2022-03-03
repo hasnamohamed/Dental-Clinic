@@ -91,9 +91,6 @@
                                             <th>Time</th>
                                             <th>Visit Type</th>
                                             <th>Status</th>
-                                            <th>Drug Prescription</th>
-                                            <th>Red Test</th>
-                                            <th>Diagnosis</th>
                                             <th>Approving</th>
                                             <th>Canceling</th>
                                             <th>Make Bill</th>
@@ -108,9 +105,6 @@
                                                 <td>{{ $appointment->time }}</td>
                                                 <td>{{ $appointment->visit_type }}</td>
                                                 <td>{{ $appointment->status }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
                                                 <td>
                                                     <form action="{{ route('appointments.approved', $appointment->id) }}"
                                                         method="GET">

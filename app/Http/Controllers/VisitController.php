@@ -19,6 +19,7 @@ class VisitController extends Controller
     public function show_appointments()
     {
         $appointments = Visit::with('patient')->get();
+
         return view('admin.visits.show_appointments', compact('appointments'));
     }
     public function create()
@@ -29,7 +30,7 @@ class VisitController extends Controller
         $diagnosis = Diagnosi::all();
         return view('admin.visits.add_appointments', compact('patients', 'drugs', 'reds', 'diagnosis'));
     }
-
+    
     public function store(AddAppointmentRequest $request)
     {
         $date = Visit::where('date', '=', $request->input('date'))->first();
@@ -48,7 +49,7 @@ class VisitController extends Controller
             if (isset($red_ids)) {
                 foreach ($red_ids as $key => $value) {
                     $redvisit = new RedVisit();
-                    $redvisit->red_id = $value;
+                    $redvisit->red_test_id = $value;
                     $redvisit->visit_id = $Appointment->id;
                     $redvisit->save();
                 }

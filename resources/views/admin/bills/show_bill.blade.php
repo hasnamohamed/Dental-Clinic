@@ -34,14 +34,14 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
 <script src="../../../admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../../../admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../../../admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
- 
- <script>
+
+<script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy","excel", "pdf", "print"]
+            "buttons": ["copy", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -54,7 +54,7 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
         });
     });
     //"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-</script>  
+</script>
 </body>
 
 </html>
@@ -63,8 +63,7 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                        class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
 
@@ -106,7 +105,7 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                 @if (session()->has('message'))
+                    @if (session()->has('message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('message') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -126,16 +125,57 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
                                         <tr>
                                             <th>Visit Type</th>
                                             <th>Total Price</th>
+                                            <th>Drug Prescription</th>
+                                            <th>Price</th>
+                                            <th>Diagnosis</th>
+                                            <th>Price</th>
+                                            <th>Red Test</th>
+                                            <th>Price</th>
                                             <th>Delete</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>{{ $bill->visit->visit_type }}</td>
-                                            <td>{{ $bill->salary}}</td>
+                                            <td>{{ $total }}</td>
                                             <td>
-                                                <form action="{{ route('bill.delete',$bill->id) }}"
-                                                    method="POST">
+                                                @foreach ($red as $reds)
+                                                    {{ $reds['name'] }} <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach ($red as $reds)
+                                                    {{ $reds['price'] }} <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach ($diag as $diags)
+                                                    {{ $diags['name'] }} <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach ($diag as $diags)
+                                                    {{ $diags['price'] }} <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach ($drug as $drugs)
+                                                    {{ $drugs['name'] }} <br>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach ($drug as $drugs)
+                                                    {{ $drugs['price'] }} <br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('bill.delete', $bill->id) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
@@ -165,4 +205,3 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
 
 </div>
 <!-- ./wrapper -->
-
